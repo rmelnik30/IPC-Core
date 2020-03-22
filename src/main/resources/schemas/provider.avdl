@@ -1,0 +1,16 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  enum Provider {
+    UNKNOWN_PROVIDER,
+    ENET,
+    TESTING_PROVIDER,
+    SPORTCC,
+    BETRADAR,
+    PERFORM,
+    LIVESCORE,
+    TEAM_TALK,
+    PERFORM_OMNI_SPORT,
+    OPTA,
+    SPORTSBOOK
+  }
+}

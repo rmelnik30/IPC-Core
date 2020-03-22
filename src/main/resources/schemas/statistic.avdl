@@ -1,0 +1,33 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Statistic {
+    union { null, int } fouls;
+    union { null, int } throwIn;
+    union { null, int } offSides;
+    union { null, int } ballPossession;
+    union { null, int } crosses;
+    union { null, int } corners;
+    union { null, int } yellowCards;
+    union { null, int } redCards;
+    union { null, int } yellowRedCards;
+    union { null, int } shotsOn;
+    union { null, int } shotsOff;
+    union { null, int } shotsWood;
+    union { null, int } blokedShots;
+    union { null, int } counterAttacks;
+    union { null, int } goalKeeperSaves;
+    union { null, int } goalKicks;
+    union { null, int } freeKicks;
+    union { null, int } treatments;
+    union { null, int } breaks;
+    union { null, int } servicePointLost;
+    union { null, int } serviceGameLost;
+    union { null, int } doubleFaults;
+    union { null, int } servicePointsWon;
+    union { null, int } maxPointsInRow;
+    union { null, int } breakPoints;
+    union { null, int } maxGamesInRow;
+    union { null, int } serviceGamesWon;
+    union { null, int } aces;
+  }
+}

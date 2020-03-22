@@ -1,0 +1,67 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Batsman {
+    int playerId;
+    union { null, int } dismissalId;
+    union { null, int } runsScored;
+    union { null, int } foursScored;
+    union { null, int } sixesScored;
+    union { null, int } ballsFaced;
+    union { null, int } bowlerId;
+    union { null, int } caughtId;
+    union { null, double } strikeRating; // result of runsScored(R)/ballsFaced(B) * 100
+    union { null, string } dismissal;
+    union { null, int } onStrike;
+  }
+
+  record Bowler {
+    int playerId;
+    union { null, int } oversBowled;
+    union { null, int } maidensBowled;
+    union { null, int } runsConceded;
+    union { null, int } wicketsTaken;
+    union { null, int } noBalls;
+    union { null, int } wides;
+    union { null, double } er; // result of runsConceded(R)/oversBowled(Ov)
+    union { null, int } onStrike;
+  }
+
+  record FallofWicket {
+    int playerId;
+    union { null, int } bowlerId;
+    union { null, int } runs;
+    union { null, float } overBall;
+    union { null, int } dismissalId;
+    union { null, int } order;
+  }
+
+  record CricketCommentary {
+    union { null, float } overs;
+    union { null, int } batsmanId;
+    union { null, int } bowlerId;
+    union { null, string } text;
+    union { null, string } scoreText;
+    union { null, string } scoreValue;
+  }
+
+  record Inning {
+    int inningId;
+    union { null, int } runsScored;
+    union { null, int } wickets;
+    union { null, double } overs;
+    union { null, string } titleInning;
+    union { null, int } battingTeamId;
+    union { null, int } inningNumber;
+    union { null, double } runRate; // result of runsScored(Pt)/overs(Ov)
+    union { null, int } totalExtras;
+    union { null, int } byes;
+    union { null, int } legByes;
+    union { null, int } noBalls;
+    union { null, int } wides;
+    union { null, int } penalties;
+    array<Batsman> batsmen;
+    array<Bowler> bowlers;
+    array<FallofWicket> fallofWickets;
+    array<CricketCommentary> commentaries;
+  }
+}

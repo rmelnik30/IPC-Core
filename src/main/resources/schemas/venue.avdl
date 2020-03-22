@@ -1,0 +1,17 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Venue {
+    string venueId;
+    union { null, string } name;
+    union { null, string } countryId;
+    union { null, string } countryName;
+    union { null, string } condition;
+    union { null, int } spectators;
+    union { null, int } attendanceId; // value should come from VenueAttendance enum
+    union { null, boolean } isNeutral;
+    union { null, string } city;
+    array<string> ends;
+    union { null, int } established;
+    union { null, int } lightsId; // value should come from VenueLights enum
+  }
+}

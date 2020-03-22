@@ -1,0 +1,20 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Participant {
+    string participantId;
+    union { null, string } name;
+    union { null, int } kn;
+    union { null, int } opt; // TODO: What does this mean? Find out the purpose of this property
+    union { null, string } countryId;
+    union { null, int } redCards; // taken from Incidents
+    union { null, int } yellowCards; // taken from Incidents
+    union { null, int } secondYellowCards; // taken from Incidents
+    union { null, string } countryName;
+    union { null, int } gender;
+    union { null, int } ageGroup;
+  }
+
+  record Participants {
+    array<Participant> participants;
+  }
+}

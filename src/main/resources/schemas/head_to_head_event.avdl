@@ -1,0 +1,9 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  import idl "summary_event.avdl";
+
+  record HeadToHeadEvent {
+    SummaryEvent summaryEvent;
+    int providerId;
+  }
+}

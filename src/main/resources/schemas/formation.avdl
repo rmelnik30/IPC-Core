@@ -1,0 +1,6 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Formation {
+    array<int> formation;
+  }
+}

@@ -1,0 +1,9 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Referee {
+    union { null, string } name;
+    union { null, int } kind;
+    union { null, string } countryId;
+    union { null, string } countryName;
+  }
+}

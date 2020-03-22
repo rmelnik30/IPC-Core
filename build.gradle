@@ -1,0 +1,64 @@
+import com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask
+import com.commercehub.gradle.plugin.avro.GenerateAvroProtocolTask
+import com.commercehub.gradle.plugin.avro.GenerateAvroSchemaTask
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.19.0"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "com.commercehub.gradle.plugin.avro"
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "org.apache.avro:avro:1.9.2"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+avro {
+    createSetters = true
+    createOptionalGetters = false
+    gettersReturnOptional = false
+    fieldVisibility = "PUBLIC_DEPRECATED"
+    outputCharacterEncoding = "UTF-8"
+    stringType = "String"
+    templateDirectory = null
+    enableDecimalLogicalType = true
+    dateTimeLogicalType = "JSR310"
+}
+
+def generateProtocol = tasks.register("generateProtocol", GenerateAvroProtocolTask) {
+    source file("src/main/resources/schemas")
+    include("**/*.avdl")
+    outputDir = file("build/generated-avro-main-avpr")
+}
+
+def generateSchema = tasks.register("generateSchema", GenerateAvroSchemaTask) {
+    dependsOn generateProtocol
+    source file("src/main/resources/schemas")
+    source file("build/generated-avro-main-avpr")
+    include("**/*.avpr")
+    outputDir = file("build/generated-main-avro-avsc")
+}
+
+def generateAvro = tasks.register("generateAvro", GenerateAvroJavaTask) {
+    source(generateSchema)
+    outputDir = file("build/generated-main-avro-java")
+}
+
+tasks.named("compileJava").configure {
+    source(generateAvro)
+}

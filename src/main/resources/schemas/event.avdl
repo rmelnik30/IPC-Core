@@ -1,0 +1,148 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  import idl "sport.avdl";
+  import idl "participant.avdl";
+  import idl "series_info.avdl";
+  import idl "formation.avdl";
+  import idl "venue.avdl";
+  import idl "incidents.avdl";
+  import idl "substitutions.avdl";
+  import idl "commentaries.avdl";
+  import idl "statistic.avdl";
+  import idl "lineup.avdl";
+  import idl "referee.avdl";
+  import idl "person.avdl";
+  import idl "head_to_head_event.avdl";
+  import idl "inning.avdl";
+
+  record Event {
+  /** test description */
+    string id;
+    Sport sport;
+
+  // league related data
+    union { null, string } stageId;
+    union { null, string } stageName;
+    union { null, string } seasonId;
+    union { null, string } seasonName;
+    union { null, string } categoryId;
+    union { null, string } categoryName;
+    union { null, string } specialSeasonId;
+    union { null, string } countryName;
+    union { null, string } countryId;
+
+  // Participants
+    array<Participants> teams;
+
+  // Timestamps
+    long scheduledStartDateTime;
+    union { null, long } providedActualStartDateTime;
+    union { null, long } internalActualStartDateTime;
+    union { null, long } scheduledEndDateTime;
+    union { null, long } daysMatch;
+    union { null, long } providedActualEndDateTime;
+    union { null, long } internalActualEndDateTime;
+    union { null, long } cancellationDateTime;
+    union { null, long } postponeDateTime;
+    union { null, long } lastUpdateTime;
+    union { null, long } lineupsConfirmationUpdateTime;
+    union { null, long } lineupsUpdateTime;
+    array<long> previousScheduledStartDateTimes;
+
+  // Basic Info
+    union { null, string } statusText;
+    union { null, int } statusMinute;
+    union { null, int } statusId;
+    union { null, int } previousStatusId;
+    union { null, int } overallStatusId;
+    union { null, string } overallStatus;
+    union { null, int } previousOverallStatusId;
+    union { null, string } coverageId;
+    union { null, int } scoutConnectionStatusId;
+    array<SeriesInfo> seriesInfo;
+    union { null, int } winner;
+    union { null, int } round;
+    union { null, string } roundTx;
+    union { null, int } orderInRound;
+    union { null, int } eventTypeId;
+    union { null, string } eventTypeTx;
+
+  // Details
+    union { null, int } lineupsConfirmed;
+    union { null, int } interruptionReasonId;
+    union { null, int } lastSetTypeId;
+    Venue venue;
+    Incidents incidents;
+    Substitutions substitutions;
+    map<Commentaries> commentaries;
+    map<Statistic> statistics;
+    array<Lineup> lineups;
+    array<Formation> formations;
+    array<Referee> referees;
+    array<Person> persons;
+
+  // Match Progress Time
+    union { null, int } timeElapsed;
+    union { null, int } timeElapsedTypeId;
+    union { null, int } timeElapsedInjury;
+    union { null, long } timeElapsedUpdateTime;
+    union { null, int } localTimeOffsetInMinutes;
+
+  // Tennis service
+    union { null, int } participantFirstToServe;
+    union { null, int } participantServing;
+    union { null, int } numberOfSets;
+
+  // Scores
+    array<int> overallScore;
+    array<int> extraTimeScore;
+    array<int> halfTimeScore;
+    array<int> ordinaryTimeScore;
+    array<int> overTimeScore;
+    array<int> penaltyScore;
+    array<int> period1Score;
+    array<int> period2Score;
+    array<int> period3Score;
+    array<int> period4Score;
+    array<int> period5Score;
+    array<int> quarter1Score;
+    array<int> quarter2Score;
+    array<int> quarter3Score;
+    array<int> quarter4Score;
+    array<string> gameScore;
+    array<int> set1Score;
+    array<int> set2Score;
+    array<int> set3Score;
+    array<int> set4Score;
+    array<int> set5Score;
+    array<int> tiebreak1Score;
+    array<int> tiebreak2Score;
+    array<int> tiebreak3Score;
+    array<int> tiebreak4Score;
+    array<int> tiebreak5Score;
+    array<int> points1Score;
+    array<int> points2Score;
+    array<float> over1Score;
+    array<float> over2Score;
+    array<int> wickets1Score;
+    array<int> wickets2Score;
+    array<int> declared1Score;
+    array<int> declared2Score;
+
+  // Indicators
+    union { null, int } hasIncidents;
+    union { null, int } hasCommentaries;
+    union { null, int } hasSubstitutions;
+    union { null, int } hasInnings;
+    union { null, int } hasWickets;
+    union { null, int } hasOdds;
+    union { null, int } hasStatistics;
+    union { null, int } hasLineups;
+    array<HeadToHeadEvent> headToHead;
+    array<Inning> innings;
+    union { null, string } currentMatchStatus;
+    union { null, int } currentlyBatting;
+    union { null, int } tossTeamId;
+    union { null, int } tossDecision;
+  }
+}

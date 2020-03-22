@@ -1,0 +1,13 @@
+@version("1.0.0")
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  import idl "provider.avdl";
+  import idl "event.avdl";
+  import idl "participant_entity.avdl";
+
+  record Offer {
+    string id;
+    Provider provider;
+    union { Event, ParticipantEntity } offer;
+  }
+}

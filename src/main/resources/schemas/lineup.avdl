@@ -1,0 +1,29 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record LineupPerson {
+    string lineupPersonId;
+    union { null, string } firstName;
+    union { null, string } lastName;
+    union { null, string } shortName;
+    union { null, int } positionId; // Position of the player in the field, regardless of whether the player takes part in a match or not
+    union { null, int } actualPositionId; // A player, who is normally a midfielder, may start on the bench or be injured
+    union { null, string } positionName;
+    union { null, int } jerseyNumber;
+    union { null, string } jerseyName;
+    union { null, int } minuteOut;
+    union { null, int } secondOut;
+    union { null, int } minuteIn;
+    union { null, int } secondIn;
+    array<int> fieldPosition;
+  }
+
+  record Lineup {
+    union { null, int } startingLineupCount;
+    union { null, int } teamPosition;
+    array<LineupPerson> lineups;
+    array<LineupPerson> substitutes;
+    array<LineupPerson> injured;
+    array<LineupPerson> suspended;
+    array<LineupPerson> coaches;
+  }
+}

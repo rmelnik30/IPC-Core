@@ -1,0 +1,11 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  import idl "sport.avdl";
+  import idl "summary_event.avdl";
+
+  record ParticipantEntity {
+    string participantId;
+    Sport sportId;
+    array<SummaryEvent> events;
+  }
+}

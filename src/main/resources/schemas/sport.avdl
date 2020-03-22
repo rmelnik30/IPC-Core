@@ -1,0 +1,4 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  enum Sport { GENERAL, SOCCER, TENNIS, ICE_HOCKEY, BASKETBALL, CRICKET }
+}

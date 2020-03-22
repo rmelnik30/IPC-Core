@@ -1,0 +1,26 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  import idl "participant.avdl";
+
+  record SummaryEvent {
+    string eventId;
+    int sportId;
+    long scheduledStartDateTime;
+    array<Participants> teams;
+    union { null, string } stageId;
+    union { null, string } stageName;
+    union { null, string } categoryId;
+    union { null, string } categoryName;
+    union { null, string } seasonId;
+    union { null, string } specialSeasonId;
+    union { null, string } seasonName;
+    union { null, string } countryId;
+    union { null, string } countryName;
+    union { null, int } statusId;
+    union { null, int } overallStatusId;
+    union { null, string } statusText;
+    array<int> overallScore;
+    union { null, int } winner;
+    union { null, int } eventTypeId;
+  }
+}

@@ -1,0 +1,35 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record Substitution {
+    long substitutionId;
+    union { null, int } minute;
+    union { null, int } second;
+    union { null, int } teamNumber;
+    union { null, string } playerId;
+    union { null, string } playerIdOut;
+    union { null, int } playerNum;
+    union { null, int } playerNumOut;
+    union { null, string } playerName;
+    union { null, string } playerNameOut;
+    union { null, string } playerShortName;
+    union { null, string } playerShortNameOut;
+    union { null, int } type;
+    array<int> score;
+    union { null, string } reason;
+    union { null, long } sortOrder;
+    union { null, int } period;
+    union { null, int } isPlayerDataConfirmed;
+  }
+
+  record MinuteSubstitutions {
+    array<Substitution> substitutions;
+  }
+
+  record PeriodSubstitutions {
+    map<MinuteSubstitutions> minuteSubstitutions;
+  }
+
+  record Substitutions {
+    map<PeriodSubstitutions> periodSubstitutions;
+  }
+}

@@ -1,0 +1,10 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  record SeriesInfo {
+    int totalLegs;
+    int currentLeg;
+    array<int> score;
+    int winner;
+    int isSeriesScore;
+  }
+}

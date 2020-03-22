@@ -1,0 +1,14 @@
+@namespace("com.livescore.avro.ipc.specific")
+protocol Satan {
+  import idl "language.avdl";
+
+  record Commentary {
+    map<string> info; // TODO: Add enumeration of all Commentary Info Types
+    union { null, string } comment;
+    Language language;
+  }
+
+  record Commentaries {
+    array<Commentary> commentaries;
+  }
+}
